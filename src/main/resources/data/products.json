@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "iPhone 18",
+    "description": "Điện thoại iPhone 18, màn hình 6.9 inch, chip A20 Pro",
+    "price": 42299000,
+    "image": "/images/iphone-18.jpg",
+    "categoryId": 1
+  },
+  {
+    "id": 2,
+    "name": "Samsung Galaxy S24",
+    "description": "Điện thoại Samsung Galaxy S24, màn hình Dynamic AMOLED 2X",
+    "price": 17990000,
+    "image": "/images/samsung-galaxy-s24.jpg",
+    "categoryId": 1
+  },
+  {
+    "id": 3,
+    "name": "iPad Air M4",
+    "description": "Máy tính bảng iPad Air M4, màn hình 11 inch",
+    "price": 19790000,
+    "image": "/images/ipad-air-m4.jpg",
+    "categoryId": 2
+  },
+  {
+    "id": 4,
+    "name": "Xiaomi Pad 8 Pro",
+    "description": "Máy tính bảng Xiaomi Pad 8 Pro, màn hình IPS LCD 11.2 inch",
+    "price": 15190000,
+    "image": "/images/xiaomi-pad-8-pro.jpg",
+    "categoryId": 2
+  }
+]

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách sản phẩm</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header class="site-header">
+        <h1>BÁN HÀNG TRỰC TUYẾN</h1>
+        <nav>
+            <a th:href="@{/products}">Tất cả</a>
+            <a th:each="c : ${categories}"
+               th:href="@{/products(categoryId=${c.id})}"
+               th:text="${c.name}"></a>
+        </nav>
+    </header>
+
+    <main>
+        <form method="get" th:action="@{/products}">
+            <input type="hidden" name="categoryId" th:value="${selectedCategoryId}"/>
+            <input type="text" name="keyword" placeholder="Tìm theo tên sản phẩm" th:value="${keyword}"/>
+            <input type="number" name="fromPrice" placeholder="Giá từ" th:value="${fromPrice}"/>
+            <input type="number" name="toPrice" placeholder="Giá đến" th:value="${toPrice}"/>
+            <button type="submit">Tìm kiếm</button>
+        </form>
+
+        <div class="product-grid">
+            <a class="product-card"
+               th:each="p : ${products}"
+               th:href="@{/products/{id}(id=${p.id})}">
+                <img th:src="${p.image}" th:alt="${p.name}"/>
+                <h3 th:text="${p.name}"></h3>
+                <p th:text="${p.description}"></p>
+                <p class="product-price" th:text="${#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')} + ' đ'"></p>
+            </a>
+        </div>
+
+        <p th:if="${#lists.isEmpty(products)}">Không tìm thấy sản phẩm phù hợp.</p>
+    </main>
+</body>
+</html>
