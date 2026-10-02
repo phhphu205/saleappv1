@@ -42,9 +42,9 @@ public class ProductService {
         return categories;
     }
 
-    public Optional<Product> findById(int id) {
+    public Optional<Product> findById(Long productId) {
         return products.stream()
-                .filter(p -> p.getId() == id)
+                .filter(p -> p.getId() == productId)
                 .findFirst();
     }
 
@@ -56,9 +56,10 @@ public class ProductService {
                 .orElse("Không xác định");
     }
 
-    public List<Product> filterProducts(Integer categoryId, String keyword, Double fromPrice, Double toPrice) {
+    public List<Product> filterProducts(Long categoryId, String keyword, Double fromPrice, Double toPrice) {
         return products.stream()
-                .filter(p -> categoryId == null || p.getCategoryId() == categoryId)
+        		.filter(p -> categoryId == null
+                || (p.getCategory() != null && p.getCategory().getId().equals(categoryId)))
                 .filter(p -> keyword == null || keyword.isBlank()
                         || p.getName().toLowerCase().contains(keyword.toLowerCase()))
                 .filter(p -> fromPrice == null || p.getPrice() >= fromPrice)
